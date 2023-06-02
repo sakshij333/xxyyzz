@@ -1,0 +1,41 @@
+1)
+	import pandas as pd
+	import numpy as np
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+2)
+	
+df=pd.read_csv('D:\\sem6\\dsbda\\Exam software DSBDA\\datasets\\tinanic.csv')
+
+3)
+
+print(df)
+
+4)
+
+cols=df.columns
+
+5)
+
+print(cols)
+
+6)
+
+print(df.info())
+7)
+
+print(df.describe())
+
+8)
+
+print(df.isnull().sum())
+
+9)
+
+sns.boxplot(x=df["Sex"],y=df["Age"])
+
+10)
+
+sns.boxplot(x=df["Sex"],y=df["Age"],hue=df["Survived"])
+plt.show()
+

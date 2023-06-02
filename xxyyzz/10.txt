@@ -1,0 +1,47 @@
+
+
+1)import numpy as np
+  import pandas as pd
+  import seaborn as sns
+  import matplotlib
+  import matplotlib.pyplot as plt
+
+2)df = pd.read_csv("D:\sem6\dsbda\Exam software DSBDA\datasets\iris.csv", header=None)
+
+3)col_names = ['sepal_length','sepal_width','petal_length','petal_width','species']
+
+4)df = pd.read_csv("D:\sem6\dsbda\Exam software DSBDA\datasets\iris.csv", names=col_names)
+  print(df.head())
+
+5) column = len(list(df))
+   column
+
+
+6) print(df.info())
+
+
+7) print(np.unique(df["species"]))
+
+8)fig, axes = plt.subplots(2,2,figsize=(23,14))
+
+  axes[0,0].set_title("Distribution for first column")
+  axes[0,0].hist(df["sepal_length"]);
+
+  axes[0,1].set_title("Distribution for second column")
+  axes[0,1].hist(df["sepal_width"]);
+
+  axes[1,0].set_title("Distribution for thirs column")
+  axes[1,0].hist(df["petal_length"]);
+
+  axes[1,1].set_title("Distribution for fourth column")
+  axes[1,1].hist(df["petal_width"]);
+
+
+9) data_to_plot = [df["sepal_length"], df["sepal_width"], df["petal_length"], df["petal_width"]]
+   sns.set_style("whitegrid")
+   fig = plt.figure(1, figsize =(12,8))
+   ax = fig.add_subplot(111)
+   bp = ax.boxplot(data_to_plot)
+
+
+10) df.describe()

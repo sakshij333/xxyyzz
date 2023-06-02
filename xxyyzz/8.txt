@@ -1,0 +1,30 @@
+\\Practical 8
+
+1)#DSBDAL Experiment 8
+#install seaborn
+! pip install seaborn
+
+2)conda install seaborn
+
+3)#import libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+dataset = sns.load_dataset('titanic')
+dataset.head()
+
+4)#Dist Plot
+sns.displot(dataset['fare'])
+
+5)sns.displot(dataset['fare'],kde=False)
+
+6)sns.displot(dataset['fare'],kde=False,bins=10)
+
+7)#Joint plot
+sns.jointplot(x='age',y='fare',data=dataset)
+
+8)sns.jointplot(x='age',y='fare',data=dataset,kind='hex')
+
+9)# Rug plot
+sns.rugplot(dataset['fare'])

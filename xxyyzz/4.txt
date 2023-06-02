@@ -1,0 +1,84 @@
+\\ practical 4
+
+
+1- #import libraries
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import sklearn as sk
+%matplotlib inline
+
+
+2- #import dataset
+df=pd.read_csv("D:\Sem 6\DSBDA Pract\housing.csv"
+
+3- #Show the data from top
+print(df.head())
+
+4- #Data preprocessing
+df.isnull().sum()
+
+5- : # Exploratory Data Analysis
+sns.set(rc={'figure.figsize':(11,7)})
+sns.displot(df['MEDV'],bins=30);
+plt.show()
+
+6- df.info()
+
+7- df.describe()
+
+8- #Heatmap function correlation matrix
+correlation_matrix=df.corr().round(2)
+#annot=true to print the values inside the square
+sns.heatmap(data=correlation_matrix,annot=True);
+
+9- #scatter plot
+plt.figure(figsize=(20,5))
+features= ['LSTAT','RM']
+target=df['MEDV']
+for i,col in enumerate(features):
+plt.subplot(1,len(features),i+1)
+x=df[col]
+y=target
+plt.scatter(x,y,marker='o')
+plt.title(col)
+plt.xlabel(col)
+plt.ylabel('MEDV')
+
+10- #Preparing the data for training the model
+X=pd.DataFrame(np.c_[df['LSTAT'],df['RM']],columns=['LSTAT','RM'])
+Y=df['MEDV']
+
+11- # Splitting the data into training and testing sets
+from sklearn.model_selection import train_test_split
+X_train,X_test,Y_train,Y_test=train_test_split(X, Y, test_size = 0.2,␣
+↪random_state=5)
+print(X_train.shape)
+print(X_test.shape)
+print(Y_train.shape)
+print(Y_test.shape)
+
+12- #Training and testing the model
+from sklearn.linear_model import LinearRegression
+model=LinearRegression()
+model.fit(X_train,Y_train)
+
+13- #Model evaluation
+#Results of Linear Regression i.e. Mean Squared Error and R2 Score.
+#RMSE
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
+#a model evaluation for testing set
+y_pred= model.predict(X_test)
+rmse=(np.sqrt(mean_squared_error(Y_test, y_pred)))
+r2 = r2_score(Y_test, y_pred)
+print("The model performance for testing set")
+print('RSE is {}'.format(rmse))
+print('Rz score is {}'.format(r2))
+
+13- #Produce a matrix for sample data
+sample_data=[[6.89,9.939]]
+#show prediction
+price=model.predict(sample_data)
+print("Predicted selling price for house: ${:,.2f}".format(price[0]))

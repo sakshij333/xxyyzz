@@ -1,0 +1,72 @@
+\\ practical 3
+
+1- #For Question 1
+#import libraries
+import pandas as pd
+
+2- #load dataset
+df1 = pd.read_csv("D:\Sem 6\DSBDA Pract\Salary.csv")
+#df1.head()
+
+3- # Show the conetnt from dataset.
+df1.head()
+
+4- #unique() function to check what values it
+df1.YearsExperience.unique()
+
+5- #Using groupby()
+df1.groupby(df1.YearsExperience).count()
+
+6- #minimum value of income in each age group
+df1.groupby(df1.YearsExperience).min()
+
+7- #maximum value of income in each age group
+df1.groupby(df1.YearsExperience).max()
+
+8- #mean of income in each age group
+df1.groupby(df1.YearsExperience).mean()
+
+9- #standard deviation of income in each age group
+df1.groupby(df1.YearsExperience).std()
+
+10- #describe function gives count,mean,standard deviation,min,max,25th␣
+↪percentile,50th percentile and 75th percentile
+df1.groupby(df1.YearsExperience).describe()
+
+11- #part 2 For Iris Dataset
+#import libraries
+from sklearn import datasets
+data = datasets.load_iris()
+df = pd.DataFrame(data.data,columns=data.feature_names)
+df['species'] = pd.Series(data.target)
+df.head()
+
+12- #Unique function to check what values it takes
+df.species.unique()
+
+13- #count of all quantitative variable according to categorial variable
+df.groupby(df.species).count()
+
+14- #max value of each categorial variable as species
+df.groupby(df.species).max()
+
+15- #min value of each categorial variable as species
+df.groupby(df.species).min()
+
+16- #mean value of each categorial variable as species
+df.groupby(df.species).mean()
+
+17- #standard deviation of each categorial variable as specie
+df.groupby(df.species).std()
+
+18- #describe function gives count,mean,standard deviation,min,max,25th␣
+↪percentile,50th percentile and 75th percentile
+df.groupby(df.species)["sepal length (cm)"].describe()
+
+19- df.groupby(df.species)["sepal width (cm)"].describe()
+
+20- #statistics for petal length
+df.groupby(df.species)["petal length (cm)"].describe()
+
+21- #statistics for petal width
+df.groupby(df.species)["petal width (cm)"].describe()

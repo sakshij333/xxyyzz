@@ -1,0 +1,44 @@
+# Practical 1
+
+1] import pandas as pd
+import numpy as np
+df = pd.read_csv("C:\\Users\\Ekta\\DSBDA\\Iris.csv")
+df.head(5)
+
+2]df.isnull()
+
+3]df.isnull().sum()
+
+4]df = pd.read_csv("C:\\Users\\Ekta\\DSBDA\\Iris.csv")
+
+5]df
+
+6]df.isnull()
+
+7]df.notnull()
+
+8]df.notnull().sum()
+
+9]df.notnull().any()
+
+10]df.describe()
+
+11]df.info()
+
+12]df.tail()
+
+13]df[0:5]
+
+14]df[3:5]
+
+15]df.iloc[3:5 , 0:3]
+
+16]df['SepalLengthCm']
+
+17]df.sort_values(by="SepalWidthCm")
+
+18]#calculate the mean value for SepalLength
+avg_len=df["SepalLengthCm"].astype("float").mean(axis=0)
+print("Average of SepalLengthCm ",avg_len)
+df["SepalLengthCm"].replace(np.nan,avg_len,inplace=True)
+
